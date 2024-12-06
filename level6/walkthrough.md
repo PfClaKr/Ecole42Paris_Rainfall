@@ -16,7 +16,7 @@ level6@RainFall:~$
 ```
 There is one excutable file **level6**, it take argument but return Nope, without argument its Segmentation fault. \
 \
-Runt the binary file with GDB.
+Run the binary file with GDB.
 ```sh
 (gdb) info functions
 ...
