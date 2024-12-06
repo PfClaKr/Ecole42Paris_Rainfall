@@ -9,11 +9,12 @@ void v(void)
 
 	fgets(buffer, 512, stdin);
 	printf(buffer);
-	if (64 == m) {
+	if (64 == m)
+	{
 		fwrite("Wait what?!\n", 1, 12, stdout);
 		system("/bin/sh");
 	}
-	return ;
+	return;
 }
 
 int main(void)
