@@ -15,7 +15,7 @@ level2@RainFall:~$ ./level2 42
 42
 42
 ```
-There is one excutable file **level2**, it works like cat, take standarе input, print them and shutting down. \
+There is one excutable file **level2**, it works like cat, take standard input, print them and shutting down. \
 \
 Run the binary file with GDB.
 ```sh
