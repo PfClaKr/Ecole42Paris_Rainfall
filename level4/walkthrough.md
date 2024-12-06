@@ -89,4 +89,4 @@ level4@RainFall:~$ cat /tmp/exploit3 - | ./level4
 ...
 (hidden)
 ```
-level4 passed ! 통화점여!okidoki
+level4 passed !
