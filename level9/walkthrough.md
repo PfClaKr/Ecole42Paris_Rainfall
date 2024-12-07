@@ -11,7 +11,7 @@ dr-x--x--x  1 root   root    340 Sep 23  2015 ..
 level9@RainFall:~$ ./level9
 level9@RainFall:~$ ./level9 42
 ```
-there is one excutable file **level9**, it does nothing. \
+There is one excutable file **level9**, it does nothing. \
 \
 Run the binary file with GDB.
 ```sh
