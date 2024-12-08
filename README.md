@@ -48,3 +48,4 @@ With this text, you are succeed of login.
 |NX|Non-Executable, Option of memory protect.|
 |PIE|Position Independent Executable, fix library address position.|
 |Rpath / Runpath|Path of runtime library.|
+
