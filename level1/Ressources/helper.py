@@ -11,6 +11,22 @@ def create_pattern(length):
     return pattern[:length]
 
 
+def hex_to_little_endian_ascii(hex_value):
+    """
+    16진수를 리틀 엔디안으로 변환하고 ASCII 문자열로 변환합니다.
+    """
+    # 16진수 문자열을 바이트 배열로 분리
+    hex_str = f"{hex_value:08x}"  # 8자리 16진수로 포맷
+    bytes_list = [hex_str[i:i + 2] for i in range(0, len(hex_str), 2)]
+    
+    # 리틀 엔디안 순서로 바이트 뒤집기
+    little_endian_bytes = bytes_list[::-1]
+    
+    # ASCII 문자로 변환
+    ascii_chars = ''.join(chr(int(byte, 16)) for byte in little_endian_bytes)
+    return ascii_chars
+
+
 def find_offset(value, length):
     """
     생성된 패턴에서 특정 값의 오프셋을 찾습니다.
@@ -35,7 +51,15 @@ if __name__ == "__main__":
         print("Invalid input! Please enter a numeric value for length.")
         exit(1)
     
-    # 특정 값 찾기
-    search_value = input("\nEnter the value to find (e.g., 'aa1aa2'): ")
+    # 특정 값 입력 및 변환
+    try:
+        hex_value = int(input("\nEnter the hex value to find (e.g., 0x63613563): "), 16)
+        search_value = hex_to_little_endian_ascii(hex_value)
+        print(f"Little Endian ASCII representation: '{search_value}'")
+    except ValueError:
+        print("Invalid input! Please enter a valid hex value.")
+        exit(1)
+    
+    # 특정 값 오프셋 찾기
     result = find_offset(search_value, length)
     print(result)

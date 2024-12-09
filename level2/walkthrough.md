@@ -83,7 +83,7 @@ j
  X�Rh//shh/bin��1�̀aa0aa1aa2aa3aa4aa5aa6aa7aa8aa9ab0ab1ab2ab35ab6ab7ab8a�
 whoami
 level3
-cat /user/home/level3/.pass
+cat /home/user/level3/.pass
 (hidden)
 ```
 level2 passed!
