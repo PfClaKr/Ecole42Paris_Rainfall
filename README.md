@@ -14,8 +14,11 @@ $> ssh level0@[ip] -p 4242
 RELRO           STACK CANARY      NX            PIE             RPATH      RUNPATH      FILE
 No RELRO        No canary found   NX enabled    No PIE          No RPATH   No RUNPATH   /home/user/level0/level0
 ```
-With this text, you are succeed of login.
+With this text, you are succeed of login. 
 
+
+Flags
+---
 #### GCC stack protector 
 - the logic of protect of stack buffer overflow.
 - usually insert Canary value in the return stack address.
@@ -48,3 +51,11 @@ With this text, you are succeed of login.
 |NX|Non-Executable, Option of memory protect.|
 |PIE|Position Independent Executable, fix library address position.|
 |Rpath / Runpath|Path of runtime library.|
+
+Reference
+---
+- [Register usage](https://stackoverflow.com/questions/18024672/what-registers-are-preserved-through-a-linux-x86-64-function-call)
+- [Calling convention](https://www.cs.virginia.edu/~evans/cs216/guides/x86.html#:~:text=call%20%3Clabel%3E%0Aret-,Calling%20Convention,-To%20allow%20separate)
+- [Why always back eip address when function calling](https://stackoverflow.com/questions/66092133/memory-stack-sub-20-from-esp)
+- [Jump flags](https://www.tutorialspoint.com/assembly_programming/assembly_conditions.htm)
+- [What is plt and got](https://ir0nstone.gitbook.io/notes/binexp/stack/aslr/plt_and_got)

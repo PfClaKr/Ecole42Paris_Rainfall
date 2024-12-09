@@ -2,14 +2,14 @@
 
 void run(void)
 {
-	fwrite("Good... Wait what?\n", 19, 1, stdout);
+	fwrite("Good... Wait what?\n", 1, 19, stdout);
 	system("/bin/sh");
 	return;
 }
 
 int main(void)
 {
-	char str[0x40]; // 0x50 - 0x10
+	char str[64];
 
 	gets(str);
 	return (0);

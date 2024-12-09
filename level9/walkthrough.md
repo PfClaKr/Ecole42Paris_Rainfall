@@ -37,18 +37,7 @@ Dump of assembler code for function main:
    0x0804860b <+23>:    call   0x80484f0 <_exit@plt>
    0x08048610 <+28>:    movl   $0x6c,(%esp)
    0x08048617 <+35>:    call   0x8048530 <_Znwj@plt>
-   0x0804861c <+40>:    mov    %eax,%ebx
-   0x0804861e <+42>:    movl   $0x5,0x4(%esp)
-   0x08048626 <+50>:    mov    %ebx,(%esp)
-   0x08048629 <+53>:    call   0x80486f6 <_ZN1NC2Ei>
-   0x0804862e <+58>:    mov    %ebx,0x1c(%esp)
-   0x08048632 <+62>:    movl   $0x6c,(%esp)
-   0x08048639 <+69>:    call   0x8048530 <_Znwj@plt>
-   0x0804863e <+74>:    mov    %eax,%ebx
-   0x08048640 <+76>:    movl   $0x6,0x4(%esp)
-   0x08048648 <+84>:    mov    %ebx,(%esp)
-   0x0804864b <+87>:    call   0x80486f6 <_ZN1NC2Ei>
-   0x08048650 <+92>:    mov    %ebx,0x18(%esp)
+   ... 
    0x08048654 <+96>:    mov    0x1c(%esp),%eax
    0x08048658 <+100>:   mov    %eax,0x14(%esp) # a
    0x0804865c <+104>:   mov    0x18(%esp),%eax
@@ -92,7 +81,7 @@ Dump of assembler code for function _ZN1N13setAnnotationEPc: # setAnnotation(thi
    0x0804870f <+1>:     mov    %esp,%ebp
    0x08048711 <+3>:     sub    $0x18,%esp
    0x08048714 <+6>:     mov    0xc(%ebp),%eax # 0xc = param 1
-   0x08048717 <+9>:     mov    %eax,(%esp) #this = 자기자신 = esp,
+   0x08048717 <+9>:     mov    %eax,(%esp) # this = esp,
    0x0804871a <+12>:    call   0x8048520 <strlen@plt>
    0x0804871f <+17>:    mov    0x8(%ebp),%edx # 0x8 = param 0
    0x08048722 <+20>:    add    $0x4,%edx

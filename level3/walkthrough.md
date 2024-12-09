@@ -27,12 +27,17 @@ Run the binary file with GDB.
 ...
 (gdb) disas v
 ...
-   0x080484c7 <+35>:    call   0x80483a0 <fgets@plt>
+   0x080484ad <+9>:     mov    0x8049860,%eax # stdin
+   0x080484b2 <+14>:    mov    %eax,0x8(%esp)
+   0x080484b6 <+18>:    movl   $0x200,0x4(%esp) # 512
+   0x080484be <+26>:    lea    -0x208(%ebp),%eax # some variable[512]
+   0x080484c4 <+32>:    mov    %eax,(%esp)
+   0x080484c7 <+35>:    call   0x80483a0 <fgets@plt> # fgets(buffer, 512, stdin);
    0x080484cc <+40>:    lea    -0x208(%ebp),%eax
    0x080484d2 <+46>:    mov    %eax,(%esp)
-   0x080484d5 <+49>:    call   0x8048390 <printf@plt>
-   0x080484da <+54>:    mov    0x804988c,%eax
-   0x080484df <+59>:    cmp    $0x40,%eax
+   0x080484d5 <+49>:    call   0x8048390 <printf@plt> # printf(buffer);
+   0x080484da <+54>:    mov    0x804988c,%eax # global variable m
+   0x080484df <+59>:    cmp    $0x40,%eax # 0x40 = 60
    0x080484e2 <+62>:    jne    0x8048518 <v+116>
 ...
 ```

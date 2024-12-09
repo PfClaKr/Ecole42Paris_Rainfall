@@ -31,13 +31,13 @@ Dump of assembler code for function m:
    0x080484f4 <+0>:     push   %ebp
    0x080484f5 <+1>:     mov    %esp,%ebp
    0x080484f7 <+3>:     sub    $0x18,%esp
-   0x080484fa <+6>:     movl   $0x0,(%esp)
-   0x08048501 <+13>:    call   0x80483d0 <time@plt>
-   0x08048506 <+18>:    mov    $0x80486e0,%edx
+   0x080484fa <+6>:     movl   $0x0,(%esp) # 0
+   0x08048501 <+13>:    call   0x80483d0 <time@plt> # time(0)
+   0x08048506 <+18>:    mov    $0x80486e0,%edx # "%s - %d\n"
    0x0804850b <+23>:    mov    %eax,0x8(%esp)
-   0x0804850f <+27>:    movl   $0x8049960,0x4(%esp)
+   0x0804850f <+27>:    movl   $0x8049960,0x4(%esp) # global variable c
    0x08048517 <+35>:    mov    %edx,(%esp)
-   0x0804851a <+38>:    call   0x80483b0 <printf@plt>
+   0x0804851a <+38>:    call   0x80483b0 <printf@plt> # printf("%s - %d\n", c, time(0))
    0x0804851f <+43>:    leave  
    0x08048520 <+44>:    ret    
 End of assembler dump.
@@ -53,15 +53,16 @@ End of assembler dump.
    0x080485b6 <+149>:   mov    %edx,0x4(%esp)
    0x080485ba <+153>:   mov    %eax,(%esp)
    0x080485bd <+156>:   call   0x80483e0 <strcpy@plt>
-   0x080485c2 <+161>:   mov    $0x80486e9,%edx
-   0x080485c7 <+166>:   mov    $0x80486eb,%eax
-...
-   0x080485d3 <+178>:   call   0x8048430 <fopen@plt>
+   0x080485c2 <+161>:   mov    $0x80486e9,%edx # "r"
+   0x080485c7 <+166>:   mov    $0x80486eb,%eax # "/home/user/level8/.pass"
+   0x080485cc <+171>:   mov    %edx,0x4(%esp)
+   0x080485d0 <+175>:   mov    %eax,(%esp)
+   0x080485d3 <+178>:   call   0x8048430 <fopen@plt> # fopen("/home/user/level8/.pass", "r")
    0x080485d8 <+183>:   mov    %eax,0x8(%esp)
-   0x080485dc <+187>:   movl   $0x44,0x4(%esp)
-   0x080485e4 <+195>:   movl   $0x8049960,(%esp)
-   0x080485eb <+202>:   call   0x80483c0 <fgets@plt>
-   0x080485f0 <+207>:   movl   $0x8048703,(%esp)
+   0x080485dc <+187>:   movl   $0x44,0x4(%esp) # 0x44 = 68
+   0x080485e4 <+195>:   movl   $0x8049960,(%esp) # global variable c
+   0x080485eb <+202>:   call   0x80483c0 <fgets@plt> # fgets (c, 68, fopen())
+   0x080485f0 <+207>:   movl   $0x8048703,(%esp) # "~~"
    0x080485f7 <+214>:   call   0x8048400 <puts@plt>
 ...
 ```
